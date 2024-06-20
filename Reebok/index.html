@@ -1,0 +1,600 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Reebok Carousel Example</title>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css"
+    />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.8.1/slick.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.8.1/slick-theme.min.css">
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/5.1.3/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+
+  
+    <style>
+        body {
+            font-family: "Work Sans", sans-serif ;
+        }
+
+        .navbar-nav {
+            margin: auto;
+            /* Center align navbar-nav */
+        }
+
+        .slider-button {
+            color: rgba(var(--color-foreground), .75);
+            background: transparent;
+            border: none;
+            cursor: pointer;
+            /* width: 44px; */
+            height: 44px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .slider-button {
+            font-size: 2rem;
+            color: white;
+        }
+
+        .nav-link:hover {
+            text-decoration: underline;
+            color: white !important;
+        }
+
+        .nav-link .bi-arrow-right:hover {
+            transform: scale(1.2);
+
+        }
+
+        .carousel-bar {
+            width: 2021px;
+            height: 39px;
+            margin-top: 0;
+            background-color: red;
+        }
+
+        .x {
+            font-size: 12px;
+            font-weight: 500;
+            line-height: 13px;
+            color: #000;
+
+        }
+
+  
+
+        .logo-block a img {
+            width: 99px;
+            height: 30px;
+            margin-bottom: 10px;
+        }
+
+        .nav-menues {
+            width: 100%;
+            margin-left: 0px;
+            color: rgba(0, 0, 0, 1) !important;
+            font-size: 14px !important;
+            font-weight: 500 !important;
+            font-style: normal !important;
+            line-height: 20px !important;
+        }
+        .floating-input {
+            position: relative;
+        }
+        .floating-input input {
+            border: none;
+            border-bottom: 1px solid #000;
+            border-radius: 0;
+            padding-right: 300px;
+            background: transparent;
+            margin-bottom:10px;
+        }
+        .floating-input label {
+            position: absolute;
+            top: 50%;
+            left: 0;
+            transform: translateY(-50%);
+            pointer-events: none;
+            transition: all 0.2s ease;
+            color: #ccc;
+        }
+        .floating-input input:focus ~ label,
+        .floating-input input:not(:placeholder-shown) ~ label {
+            top: 0;
+            transform: translateY(-100%);
+            font-size: 12px;
+            color: #000;
+        }
+        .floating-input svg {
+            position: absolute;
+            right: 10px;
+            top: 50%;
+            transform: translateY(-50%);
+            pointer-events: none;
+        }
+        #rts a:hover{
+            border-bottom:1px solid #000 ;
+        }
+
+
+            .hero-banner{
+                font-size: 40px;
+    line-height: 40px;
+    font-weight: 600;
+    color: #fff;
+    font-family: Neue Plak Wide, sans-serif !important;
+
+            }
+            .slick-slide {
+    margin: 0 5px;
+}
+.slick-prev, .slick-next {
+   
+    line-height: 1;
+    opacity: 0.75;
+    color: black;
+    border: none;
+    background: none;
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    cursor: pointer;
+    z-index: 1;
+}
+.slick-prev:hover, .slick-next:hover {
+    color: black;
+    opacity: 1;
+}
+.slick-prev {
+    left: -25px;
+}
+.slick-next {
+    right: -25px;
+}
+.slick-next:before, .slick-prev:before {
+    background-color: #fff;
+    display: flex;
+    font-size: 50px;
+    padding: 9px 12px;
+    line-height: 0px;
+    width: 40px;
+    height: 40px;
+    color: #000 !important;
+    border: 1px solid #000;
+    position: absolute;
+    bottom: 200px;
+    right: 26px;
+}
+.slick-prev:before {
+    content: '‹';
+    margin: 9px;
+    background: #fff;
+    border: 1px solid black;
+    font-size: 50px;
+}
+.slick-next:before {
+    content: '›';
+    font-size: 50px;
+    margin: 9px;
+    background: #fff;
+    border: 1px solid black;
+    font-size: 50px;
+}
+.wishlist-engine-button {
+        display: inline-block;
+        text-align: center;
+        cursor: pointer;
+        padding: 10px;
+       
+        color: #000;
+        font-size: 16px;
+        stroke-width: 2;
+        line-height: 0;
+        position: absolute;
+        top:20px;
+        right:20px;
+    }
+
+/* Style for original heart icon */
+button { 
+			background-color: transparent; 
+			border: none; 
+		} 
+
+		.fa-heart { 
+			font-size: 25px; 
+
+		} 
+
+		.blank { 
+			color: #142034; 
+		} 
+
+		.red { 
+			color: black; 
+		} 
+        
+    </style>
+
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+    <!-- Bootstrap Bundle JS (includes Popper) -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
+        crossorigin="anonymous"></script>
+        </head>
+
+<body>
+
+    <div id="carouselUtility" class="carousel slide bg-primary" data-bs-ride="carousel">
+        <div class="carousel-inner">
+            <div class="carousel-item active">
+                <nav class="navbar navbar-light bg-light">
+                    <div class="container-fluid" style="background-color:#244496;" style="width:30px;">
+                        <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
+                            <li class="nav-item">
+                                <a class="nav-link text-white" href="#">SALE NOW ON:UP TO 50% OFF  <svg  class="heart-icon"
+                                        xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+                                        class="bi bi-arrow-right" viewBox="0 0 16 16">
+                                        <path fill-rule="evenodd"
+                                            d="M1 8a.5.5 0 0 1 .5-.5h11.793l-3.147-3.146a.5.5 0 0 1 .708-.708l4 4a.5.5 0 0 1 0 .708l-4 4a.5.5 0 0 1-.708-.708L13.293 8.5H1.5A.5.5 0 0 1 1 8" />
+                                    </svg></i></a>
+                            </li>
+                        </ul>
+                    </div>
+                </nav>
+            </div>
+            <div class="carousel-item">
+                <nav class="navbar navbar-light bg-light">
+                    <div class="container-fluid" style="background-color:#244496;">
+                        <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
+                            <li class="nav-item">
+                                <a class="nav-link text-white" href="#">EXTRA 10% OFF OUTLET USE CODE RBKOUTLET10 ><svg
+                                        xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+                                        class="bi bi-arrow-right" viewBox="0 0 16 16">
+                                        <path fill-rule="evenodd"
+                                            d="M1 8a.5.5 0 0 1 .5-.5h11.793l-3.147-3.146a.5.5 0 0 1 .708-.708l4 4a.5.5 0 0 1 0 .708l-4 4a.5.5 0 0 1-.708-.708L13.293 8.5H1.5A.5.5 0 0 1 1 8" />
+                                    </svg></i></a>
+                            </li>
+                        </ul>
+                    </div>
+                </nav>
+            </div>
+        </div>
+        <button class="carousel-control-prev" type="button" data-bs-target="#carouselUtility" data-bs-slide="prev">
+            <span class="slider-button" aria-hidden="true" style="margin-left: 8.5rem; min-width: 44px;">‹</span>
+            <span class="visually-hidden">Previous</span>
+        </button>
+        <button class="carousel-control-next" type="button" data-bs-target="#carouselUtility" data-bs-slide="next">
+            <span class="slider-button" aria-hidden="true" style="margin-left: -15.5rem; min-width: 44px;">›</span>
+            <span class="visually-hidden">Next</span>
+        </button>
+    </div>
+    <div class="container">
+        <ul class="d-flex justify-content-end gap-3 list-unstyled text-dark mb-5 opacity-50 ">
+            <li><a class="text-decoration-none text-dark x" href="#">Blog</a></li>
+            <li><a class="text-decoration-none text-dark x" href="#">Wishlist</a></li>
+            <li><a class="text-decoration-none text-dark x" href="#">Need Help</a></li>
+            <li><a class="text-decoration-none text-dark x" href="#">Store Locator</a></li>
+            <li><a class="text-decoration-none text-dark x" href="#">Login/Register</a></li>
+        </ul>
+    </div>
+    <div class="container   d-flex justtify-content-center ">
+
+        <div class="logo-block">
+            <a href="#">
+                <img src="https://reebok-sa.myshopify.com/cdn/shop/files/icon-reebok2-logo-white.png?v=1714470850"
+                    alt="">
+            </a>
+        </div>
+        <div class="nav-menues d-flex justify-content-between align-items-center">
+            <ul class=" d-flex justify-content-center gap-3 list-unstyled fw-bold opacity-75 mb-0" id="rts">
+                <li><a class="text-decoration-none text-dark text-uppercase" href="#">Men</a></li>
+                <li><a class="text-decoration-none text-dark text-uppercase" href="#">Women</a></li>
+                <li><a class="text-decoration-none text-dark text-uppercase" href="#">Kids</a></li>
+                <li><a class="text-decoration-none text-dark text-uppercase" href="#">Sports</a></li>
+                <li><a class="text-decoration-none text-dark text-uppercase" href="#">Classics</a></li>
+                <li><a class="text-decoration-none text-dark text-uppercase" href="#">Outlet</a></li>
+                <li><a class="text-decoration-none text-dark text-uppercase" href="#">Gift Cards</a></li>
+            </ul>
+            <ul class="d-flex justify-content-center align-items-center gap-3 list-unstyled mb-0">
+                <li>
+                     <div class="floating-input auto-focus-disable" >
+                    <input type="text" class="form-control" placeholder=" " id="searchTasks">
+                    <label for="searchTasks">Search... </label>
+                     <svg  class="heart-icon" xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+                         class="bi bi-search" viewBox="0 0 16 16">
+                        <path d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001q.044.06.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1 1 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0"/>
+                    </svg>
+                </div>
+                </li>
+                <li><a class="text-decoration-none text-dark text-uppercase" href="#"><svg xmlns="http://www.w3.org/2000/svg" width="16"
+                              height="16" fill="currentColor" class="bi bi-person" viewBox="0 0 16 16">
+                              <path d="M8 8a3 3 0 1 0 0-6 3 3 0 0 0 0 6m2-3a2 2 0 1 1-4 0 2 2 0 0 1 4 0m4 8c0 1-1 1-1 1H3s-1 0-1-1 1-4 6-4 6 3 6 4m-1-.004c-.001-.246-.154-.986-.832-1.664C11.516 10.68 10.289 10 8 10s-3.516.68-4.168 1.332c-.678.678-.83 1.418-.832 1.664z"/>
+                          </svg></a></li>
+                <li><a class="text-decoration-none text-dark text-uppercase" href="#"><svg xmlns="http://www.w3.org/2000/svg" width="16"
+                              height="16" fill="currentColor" class="bi bi-heart" viewBox="0 0 16 16">
+                              <path d="m8 2.748-.717-.737C5.6.281 2.514.878 1.4 3.053c-.523 1.023-.641 2.5.314 4.385.92 1.815 2.834 3.989 6.286 6.357 3.452-2.368 5.365-4.542 6.286-6.357.955-1.886.838-3.362.314-4.385C13.486.878 10.4.28 8.717 2.01zM8 15C-7.333 4.868 3.279-3.04 7.824 1.143q.09.083.176.171a3 3 0 0 1 .176-.17C12.72-3.042 23.333 4.867 8 15"/>
+                          </svg></a></li>
+                <li><a class="text-decoration-none text-dark text-uppercase" href="#"><svg xmlns="http://www.w3.org/2000/svg" width="16"
+                              height="16" fill="currentColor" class="bi bi-cart3" viewBox="0 0 16 16">
+                              <path d="M0 1.5A.5.5 0 0 1 .5 1H2a.5.5 0 0 1 .485.379L2.89 3H14.5a.5.5 0 0 1 .49.598l-1 5a.5.5 0 0 1-.465.401l-9.397.472L4.415 11H13a.5.5 0 0 1 0 1H4a.5.5 0 0 1-.491-.408L2.01 3.607 1.61 2H.5a.5.5 0 0 1-.5-.5M3.102 4l.84 4.479 9.144-.459L13.89 4zM5 12a2 2 0 1 0 0 4 2 2 0 0 0 0-4m7 0a2 2 0 1 0 0 4 2 2 0 0 0 0-4m-7 1a1 1 0 1 1 0 2 1 1 0 0 1 0-2m7 0a1 1 0 1 1 0 2 1 1 0 0 1 0-2"/>
+                          </svg></a></li>
+            </ul>
+        </div>
+
+
+    </div>
+
+
+
+    <div id="carouselImage" class="carousel slide" data-bs-ride="carousel">
+        <div class="carousel-inner " data-bs-interval="1000">
+            <div class="carousel-item active">
+                <img src="https://reebok-sa.myshopify.com/cdn/shop/files/SS24_SportClassics_Masthead-Large_HP_DT.webp?v=1714992535"
+                    class="d-block w-100" alt="First slide">
+                <div class="carousel-caption d-none d-md-block p-6 h-3" style="position: absolute;
+                right: 53%;
+                top: 36%;
+                bottom: 1.25rem;
+                left: 2%;
+                padding-top: 1.25rem;
+                padding-bottom: 1.25rem;
+                color: #fff;
+                text-align: center;"
+            >
+                    <h2 class="hero-banner">PLAY IS CLASSIC</h2>
+                    <p>Serve fresh tenniscore style from the court to the street.</p>
+                    <button class="btn border-none btn-light btn-round-0" style=" margin-left: -204px;border-radius:0px;">shopNewClassic</button>
+              
+                </div>
+            </div>
+            <div class="carousel-item">
+                <img src="https://reebok-sa.myshopify.com/cdn/shop/files/SS24_NanoX4-SportClassics_Masthead-Large_HP_DT.webp?v=1715063415"
+                    class="d-block w-100" alt="Second slide">
+                <div class="carousel-caption d-none d-md-block" style="position: absolute;
+                right: 53%;
+                top: 36%;
+                bottom: 1.25rem;
+                left: 2%;
+                padding-top: 1.25rem;
+                padding-bottom: 1.25rem;
+                color: #fff;
+                text-align: center;">
+                    <h2>THE OFFICIAL SHOES OF FITNESS</h2>
+                    <p>Nano X4 training shoes meet tennis-inspired tones.</p>
+                    <button class="btn border-none btn-light" style="margin-left: -204px;border-radius:0px;">Shop Now</button>
+                </div>
+            </div>
+        </div>
+        <button class="carousel-control-prev" type="button" data-bs-target="#carouselImage" data-bs-slide="prev">
+            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+            <span class="visually-hidden">Previous</span>
+        </button>
+        <button class="carousel-control-next" type="button" data-bs-target="#carouselImage" data-bs-slide="next">
+            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+            <span class="visually-hidden">Next</span>
+        </button>
+    </div>
+
+   
+
+
+
+
+    <div class="container mt-5">
+        <h1 class="text-uppercase">Latest Drops</h1>
+        <div class="row responsive">
+            <div class="col-lg-4">
+                <div class="card rounded-0 border-1 border-dark m-2 position-relative" style="width: 100%;">
+                    <img class="card-img-top" src="https://reebok-sa.myshopify.com/cdn/shop/files/100007875_SLC_eCom-tif_large.webp?v=1715416868" alt="Card image" style="width: 100%;">
+                    <div class="wishlist-engine-button position-absolute top-0 end-0 m-2">
+                                                  <button class="like"> 
+                            <i id="icon"
+                            class="fa-regular fa-heart blank"> 
+                            </i> 
+                        </button> 
+
+                    </div>
+                    <div class="card-body">
+                        <a href="#" class="btn btn-light">+</a>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-4">
+                <div class="card rounded-0 border-1 border-dark m-2 position-relative" style="width: 100%;">
+                    <img class="card-img-top" src="images/boot2.webp" alt="Card image" style="width: 100%;">
+                    <div class="wishlist-engine-button position-absolute top-0 end-0 m-2">
+                                                  <button class="like"> 
+                            <i id="icon"
+                            class="fa-regular fa-heart blank"> 
+                            </i> 
+                        </button> 
+
+                    </div>
+                    <div class="card-body">
+                        <a href="#" class="btn btn-light">+</a>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-4">
+                <div class="card rounded-0 border-1 border-dark m-2 position-relative" style="width: 100%;">
+                    <img class="card-img-top" src="images/boot2.webp" alt="Card image" style="width: 100%;">
+                    <div class="wishlist-engine-button position-absolute top-0 end-0 m-2">
+                                                  <button class="like"> 
+                            <i id="icon"
+                            class="fa-regular fa-heart blank"> 
+                            </i> 
+                        </button> 
+
+                    </div>
+                    <div class="card-body">
+                        <a href="#" class="btn btn-light">+</a>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-4">
+                <div class="card rounded-0 border-1 border-dark m-2 position-relative" style="width: 100%;">
+                    <img class="card-img-top" src="https://reebok-sa.myshopify.com/cdn/shop/files/100007875_SLC_eCom-tif_large.webp?v=1715416868" alt="Card image" style="width: 100%;">
+                    <div class="wishlist-engine-button position-absolute top-0 end-0 m-2">
+                                                  <button class="like"> 
+                            <i id="icon"
+                            class="fa-regular fa-heart blank"> 
+                            </i> 
+                        </button> 
+
+                    </div>
+                    <div class="card-body">
+                        <a href="#" class="btn btn-light">+</a>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-4">
+                <div class="card rounded-0 border-1 border-dark m-2 position-relative" style="width: 100%;">
+                    <img class="card-img-top" src="images/boot2.webp" alt="Card image" style="width: 100%;">
+                    <div class="wishlist-engine-button position-absolute top-0 end-0 m-2">
+                                                  <button class="like"> 
+                            <i id="icon"
+                            class="fa-regular fa-heart blank"> 
+                            </i> 
+                        </button> 
+
+                    </div>
+                    <div class="card-body">
+                        <a href="#" class="btn btn-light">+</a>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-4">
+                <div class="card rounded-0 border-1 border-dark m-2 position-relative" style="width: 100%;">
+                    <img class="card-img-top" src="images/boot2.webp" alt="Card image" style="width: 100%;">
+                    <div class="wishlist-engine-button position-absolute top-0 end-0 m-2">
+                                                  <button class="like"> 
+                            <i id="icon"
+                            class="fa-regular fa-heart blank"> 
+                            </i> 
+                        </button> 
+
+                    </div>
+                    <div class="card-body">
+                        <a href="#" class="btn btn-light">+</a>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-4">
+                <div class="card rounded-0 border-1 border-dark m-2 position-relative" style="width: 100%;">
+                    <img class="card-img-top" src="images/boot2.webp" alt="Card image" style="width: 100%;">
+                    <div class="wishlist-engine-button position-absolute top-0 end-0 m-2">
+                                                  <button class="like"> 
+                            <i id="icon"
+                            class="fa-regular fa-heart blank"> 
+                            </i> 
+                        </button> 
+
+                    </div>
+                    <div class="card-body">
+                        <a href="#" class="btn btn-light">+</a>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-4">
+                <div class="card rounded-0 border-1 border-dark m-2 position-relative" style="width: 100%;">
+                    <img class="card-img-top" src="https://reebok-sa.myshopify.com/cdn/shop/files/100007875_SLC_eCom-tif_large.webp?v=1715416868" alt="Card image" style="width: 100%;">
+                    <div class="wishlist-engine-button position-absolute top-0 end-0 m-2">
+                        <button class="like"> 
+                            <i id="icon"
+                            class="fa-regular fa-heart blank"> 
+                            </i> 
+                        </button> 
+                    </div>
+                    <div class="card-body">
+                        <a href="#" class="btn btn-light">+</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.10.2/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/5.1.3/js/bootstrap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.8.1/slick.min.js"></script>
+      <script>
+       $(document).ready(function(){
+    $('.responsive').slick({
+        dots: true,
+        infinite: false,
+        speed: 300,
+        slidesToShow: 4,
+        slidesToScroll: 4,
+       
+        responsive: [
+            {
+                breakpoint: 1024,
+                settings: {
+                    slidesToShow: 3,
+                    slidesToScroll: 3,
+                    infinite: true,
+                    dots: true
+                }
+            },
+            {
+                breakpoint: 600,
+                settings: {
+                    slidesToShow: 2,
+                    slidesToScroll: 2
+                }
+            },
+            {
+                breakpoint: 480,
+                settings: {
+                    slidesToShow: 1,
+                    slidesToScroll: 1
+                }
+            }
+        ]
+    });
+    function initializeButtonState(button) {
+                var iconId = button.data("#icon");
+                var isLiked = localStorage.getItem(iconId);
+
+                // Set initial state based on localStorage
+                if (isLiked === 'true') {
+                    button.find("i").addClass('black');
+                    button.find("i").addClass('fa-solid');
+                }
+            }
+
+            // Loop through each like button
+            $(".like").each(function () {
+                var button = $(this);
+                initializeButtonState(button);
+
+                // Toggle like/unlike for each button
+                button.on("click", function () {
+                    button.find("i").toggleClass("black");
+                    button.find("i").toggleClass("fa-solid");
+
+                    // Update localStorage
+                    var iconId = button.data("#icon");
+                    if (button.find("i").hasClass("black")) {
+                        localStorage.setItem(iconId, 'true');
+                    } else {
+                        localStorage.setItem(iconId, 'false');
+                    }
+                });
+            });
+});
+
+      </script>
+   
+</body>
+
+</html>

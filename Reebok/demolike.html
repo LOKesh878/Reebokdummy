@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css"
+    />
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+    <style>
+      button {
+        background-color: transparent;
+        border: none;
+      }
+
+      .fa-heart {
+        font-size: 25px;
+      }
+
+      .blank {
+        color: #142034;
+      }
+
+      .red {
+        color: red;
+      }
+    </style>
+  </head>
+
+  <body>
+    <h2 style="color: green">Welcome To GFG</h2>
+    <p>Instagram Like Button using toggleClass</p>
+
+    <button class="like-button" data-icon="heart">
+        <i class="fa-solid fa-heart"></i> Like
+    </button>
+
+    <button class="like-button" data-icon="star">
+        <i class="fa-solid fa-star"></i> Like
+    </button>
+
+    <button class="like-button" data-icon="thumbs-up">
+        <i class="fa-solid fa-thumbs-up"></i> Like
+    </button>
+    <script>
+      $(document).ready(function () {
+        // Check if the user has liked before (stored in localStorage)
+        var isLiked = localStorage.getItem("liked");
+        if (isLiked === "true") {
+          $("#icon").addClass("red");
+          $("#icon").addClass("fa-solid");
+        }
+
+        // Toggle like/unlike
+        $("#like").on("click", function () {
+          $("#icon").toggleClass("red");
+          $("#icon").toggleClass("fa-solid");
+
+          // Update localStorage
+          if ($("#icon").hasClass("red")) {
+            localStorage.setItem("liked", "true");
+          } else {
+            localStorage.setItem("liked", "false");
+          }
+        });
+      });
+    </script>
+  </body>
+</html>
